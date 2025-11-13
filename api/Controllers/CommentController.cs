@@ -38,7 +38,7 @@ namespace api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var comments = await _commentRepo.GetAllAsync();
+            var comments = await _commentRepo.GetAllAsync(queryObject);
             var commentDtos = comments.Select(s => s.ToCommentDto());
             return Ok(commentDtos);
         }
